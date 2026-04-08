@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>POS Demo</title>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="p-4">
+
+<h2>POS Demo (FBR Integration)</h2>
+
+<div class="card p-4 mt-3">
+  <h4>Invoice Preview</h4>
+
+  <p><strong>Product:</strong> Sample Item</p>
+  <p><strong>Total:</strong> PKR 3,240</p>
+
+  <button class="btn btn-success" onclick="sendFBR()">
+    Send to FBR
+  </button>
+
+  <div id="result" class="mt-3"></div>
+</div>
+
+<script>
+function sendFBR() {
+  document.getElementById('result').innerHTML =
+    "✔ Invoice Submitted to FBR<br>Tracking ID: FBR-TRX-7845129630";
+}
+</script>
+
+</body>
+</html>
