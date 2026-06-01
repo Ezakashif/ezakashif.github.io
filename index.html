@@ -96,22 +96,30 @@
         </div>
         
         <!-- Added justify-content-center to center your metrics row horizontally -->
-        <div class="hero-stats d-flex justify-content-center gap-4" data-aos="fade-up" data-aos-delay="400">
-           <div class="stat-item">
-    <span class="stat-number d-block fs-3 fw-bold counter" data-target="8">0</span>
+  <div class="hero-stats d-flex justify-content-center gap-4" data-aos="fade-up" data-aos-delay="400">
+
+  <div class="stat-item">
+    <span class="stat-number d-block fs-3 fw-bold">
+   <span class="counter" data-target="8">0</span><span class="prefix">+</span>
+    </span>
     <span class="stat-label">Years Experience</span>
   </div>
 
   <div class="stat-item">
-    <span class="stat-number d-block fs-3 fw-bold counter" data-target="15">0</span>
+    <span class="stat-number d-block fs-3 fw-bold">
+      <span class="counter" data-target="15">0</span><span class="prefix">+</span>
+    </span>
     <span class="stat-label">Projects Completed</span>
   </div>
 
   <div class="stat-item">
-    <span class="stat-number d-block fs-3 fw-bold counter" data-target="20">0</span>
+    <span class="stat-number d-block fs-3 fw-bold">
+    <span class="counter" data-target="20">0</span><span class="prefix">+</span>
+    </span>
     <span class="stat-label">Happy Clients</span>
   </div>
-        </div>
+
+</div>
 
       </div>
     </div>
@@ -1055,49 +1063,37 @@ Transforming complex business challenges into scalable digital solutions.</p>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  const counters = document.querySelectorAll('.counter');
+  const counters = document.querySelectorAll(".counter");
 
-  const animateCounter = (counter) => {
-    const target = +counter.getAttribute("data-target");
+  const animateCounter = (el) => {
+    const target = +el.getAttribute("data-target");
     let current = 0;
 
-    const step = target / 60;
+    const duration = 1200;
+    const step = target / (duration / 20);
 
-    const update = () => {
+    const timer = setInterval(() => {
       current += step;
 
-      if (current < target) {
-        counter.innerText = Math.ceil(current);
-        requestAnimationFrame(update);
+      if (current >= target) {
+        el.innerText = target;
+        clearInterval(timer);
       } else {
-        counter.innerText = target;
+        el.innerText = Math.floor(current);
       }
-    };
-
-    update();
+    }, 20);
   };
 
-  // Observe when hero stats appear in viewport
-  const observer = new IntersectionObserver((entries, observer) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-
-        counters.forEach(counter => {
-          animateCounter(counter);
-        });
-
-        observer.disconnect(); // run only once
+        counters.forEach(counter => animateCounter(counter));
       }
     });
-  }, {
-    threshold: 0.4
-  });
+  }, { threshold: 0.5 });
 
-  const heroStats = document.querySelector('.hero-stats');
-
-  if (heroStats) {
-    observer.observe(heroStats);
-  }
+  const section = document.querySelector(".hero-stats");
+  if (section) observer.observe(section);
 
 });
 </script>
