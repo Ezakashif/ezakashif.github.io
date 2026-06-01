@@ -70,43 +70,56 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section">
+  <section id="hero" class="hero section d-flex align-items-center justify-content-center min-vh-100">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row align-items-center content">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h2>Hi, I'm Uneza — Full-Stack Laravel Systems Architect</h2>
-            <p class="lead">I specialize in building secure, scalable systems including POS platforms, digital invoicing integrations, REST APIs, and modern admin dashboards.</p>
-            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-              <a href="#portfolio" class="btn btn-primary">View My Work</a>
-              <a href="#contact" class="btn btn-outline">Let's Connect</a>
-            </div>
-            <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
-              <div class="stat-item">
-                <span class="stat-number">8+</span>
-                <sp an class="stat-label">Years Experience</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">15+</span>
-                <span class="stat-label">Projects Completed</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">20+</span>
-                <span class="stat-label">Happy Clients</span>
-              </div>
-            </div>
+    <!-- justify-content-center centers the row horizontally; text-center aligns all inner content text -->
+    <div class="row justify-content-center text-center content">
+      
+      <!-- col-lg-9 or col-lg-10 prevents lines from stretching too wide and breaking readability -->
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="200">
+        
+        <div class="hero-text-block">
+          <!-- Fixed the closing </h3> tag to matching </h2> -->
+          <h2>Hi, I'm Uneza — Enterprise-Grade System Architecture & Scalable Laravel Solutions</h2>
+          
+          <p class="lead">I design and engineer secure, high-performance web applications, specialized fiscal compliance integrations, and complex database infrastructures. From orchestrating zero-downtime database schema migrations to automating high-volume API distribution layers, I transform critical business challenges into scalable digital workflows that protect platform uptime and fuel operational growth.</p>
+          
+          <div class="shape-1"></div>
+          <div class="shape-2"></div>
+          
+          <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
+            <a href="#portfolio" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-outline">Let's Connect</a>
           </div>
-          <div class="col-lg-6">
-            <div class="hero-image">
-              <img src="assets/img/profile/profile-2.png" alt="Portfolio Hero Image" class="img-fluid" data-aos="zoom-out" data-aos-delay="300">
-              <div class="shape-1"></div>
-              <div class="shape-2"></div>
-            </div>
-          </div>
+        </div>
+        
+        <!-- Added justify-content-center to center your metrics row horizontally -->
+        <div class="hero-stats d-flex justify-content-center gap-4" data-aos="fade-up" data-aos-delay="400">
+           <div class="stat-item">
+    <span class="stat-number d-block fs-3 fw-bold counter" data-target="8">0</span>
+    <span class="stat-label">Years Experience</span>
+  </div>
+
+  <div class="stat-item">
+    <span class="stat-number d-block fs-3 fw-bold counter" data-target="15">0</span>
+    <span class="stat-label">Projects Completed</span>
+  </div>
+
+  <div class="stat-item">
+    <span class="stat-number d-block fs-3 fw-bold counter" data-target="20">0</span>
+    <span class="stat-label">Happy Clients</span>
+  </div>
         </div>
 
       </div>
+    </div>
+
+  </div>
+
+</section>
+
 
     </section><!-- /Hero Section -->
 
@@ -875,7 +888,6 @@ Transforming complex business challenges into scalable digital solutions.</p>
               </div><!-- End Faq item-->
 
               <div class="faq-item">
-                <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
                <h3>Do you provide API integrations and compliance solutions?</h3>
                 <div class="faq-content">
                   <p>Absolutely. I have experience integrating third-party APIs including fiscal and digital invoicing systems, secure token-based authentication, payment gateways, and custom RESTful APIs.</p>
@@ -1039,6 +1051,56 @@ Transforming complex business challenges into scalable digital solutions.</p>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const counters = document.querySelectorAll('.counter');
+
+  const animateCounter = (counter) => {
+    const target = +counter.getAttribute("data-target");
+    let current = 0;
+
+    const step = target / 60;
+
+    const update = () => {
+      current += step;
+
+      if (current < target) {
+        counter.innerText = Math.ceil(current);
+        requestAnimationFrame(update);
+      } else {
+        counter.innerText = target;
+      }
+    };
+
+    update();
+  };
+
+  // Observe when hero stats appear in viewport
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+
+        counters.forEach(counter => {
+          animateCounter(counter);
+        });
+
+        observer.disconnect(); // run only once
+      }
+    });
+  }, {
+    threshold: 0.4
+  });
+
+  const heroStats = document.querySelector('.hero-stats');
+
+  if (heroStats) {
+    observer.observe(heroStats);
+  }
+
+});
+</script>
 
 </body>
 
