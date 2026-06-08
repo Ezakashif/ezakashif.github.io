@@ -12,6 +12,62 @@
 --------------------------------------------------------------*/
 
 /* My CSS */
+
+.portfolio-intro h3{
+    font-weight:700;
+    color:#0f2948;
+}
+
+.portfolio-intro p{
+    line-height:1.8;
+    color:#5f6b7a;
+}
+
+.stat-box{
+    background:#fff;
+    border:1px solid #ececec;
+    border-radius:15px;
+    padding:18px;
+    text-align:center;
+    transition:.3s;
+}
+
+.stat-box:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+}
+
+.stat-box h4{
+    color:#d81b1b;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.stat-box span{
+    font-size:14px;
+}
+
+.hire-me-btn{
+    background: linear-gradient(135deg, #c62828, #e53935);
+    color: #fff !important;
+    font-weight: 400 !important;
+    font-size: 6px;
+    letter-spacing: 0.5px;
+    padding: 8px 20px !important;
+    border-radius: 999px;
+    box-shadow: 0 8px 25px rgba(198,40,40,.25);
+    transition: all .3s ease;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+
+}
+
+.hire-me-btn:hover{
+    color: #fff !important;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(198,40,40,.4);
+}
 .process {
     padding: 100px 0;
 }
